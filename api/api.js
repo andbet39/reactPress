@@ -3,10 +3,12 @@ import session from 'express-session';
 import bodyParser from 'body-parser';
 import config from '../src/config';
 import * as actions from './actions/index';
+import * as models from './models/index';
 import {mapUrl} from 'utils/url.js';
 import PrettyError from 'pretty-error';
 import http from 'http';
 import SocketIo from 'socket.io';
+import mongoose from 'mongoose';
 
 const pretty = new PrettyError();
 const app = express();
@@ -57,6 +59,9 @@ const messageBuffer = new Array(bufferSize);
 let messageIndex = 0;
 
 if (config.apiPort) {
+  
+  mongoose.connect('mongodb://localhost/fluxCMS');
+
   const runnable = app.listen(config.apiPort, (err) => {
     if (err) {
       console.error(err);

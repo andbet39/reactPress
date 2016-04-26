@@ -3,6 +3,7 @@ import {IndexRoute, Route} from 'react-router';
 import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth';
 import {
     App,
+    Blog,
     Chat,
     Home,
     Widgets,
@@ -11,6 +12,10 @@ import {
     LoginSuccess,
     Survey,
     NotFound,
+    Posts,
+    Post,
+    PostAdmin,
+    PostInfo
   } from 'containers';
 
 export default (store) => {
@@ -35,9 +40,9 @@ export default (store) => {
    * Please keep routes in alphabetical order
    */
   return (
-    <Route path="/" component={App}>
+    <Route path="/" component={Blog}>
       { /* Home (main) route */ }
-      <IndexRoute component={Home}/>
+      <IndexRoute component={Posts}/>
 
       { /* Routes requiring login */ }
       <Route onEnter={requireLogin}>
@@ -50,6 +55,10 @@ export default (store) => {
       <Route path="login" component={Login}/>
       <Route path="survey" component={Survey}/>
       <Route path="widgets" component={Widgets}/>
+      <Route path="posts" component={Posts}/>
+      <Route path="/:slug" component={Post}/>
+      <Route path="admin/posts" component={PostAdmin}/>
+      <Route path="admin/post/:postId" component={PostInfo}/>
 
       { /* Catch all route */ }
       <Route path="*" component={NotFound} status={404} />

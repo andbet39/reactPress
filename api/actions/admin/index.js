@@ -1,0 +1,1 @@
+export loadpostinfo from './loadpostinfo';

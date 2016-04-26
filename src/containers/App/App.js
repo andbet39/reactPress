@@ -90,7 +90,9 @@ export default class App extends Component {
               <LinkContainer to="/about">
                 <NavItem eventKey={4}>About Us</NavItem>
               </LinkContainer>
-
+              <LinkContainer to="/posts">
+                <NavItem eventKey={4}>Post</NavItem>
+              </LinkContainer>
               {!user &&
               <LinkContainer to="/login">
                 <NavItem eventKey={5}>Login</NavItem>
@@ -115,7 +117,6 @@ export default class App extends Component {
         <div className={styles.appContent}>
           {this.props.children}
         </div>
-        <InfoBar/>
 
         <div className="well text-center">
           Have questions? Ask for help <a

@@ -1,0 +1,1 @@
+export PostInfo from './postinfo';
