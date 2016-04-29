@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from 'react';
 import ReactDOM from 'react-dom';
-import Prism from 'prismjs';
 import jQuery from 'jquery';
 import hljs from 'highlight.js';
 

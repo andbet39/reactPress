@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import { Link } from 'react-router';
 
 export default class TitleLink extends Component {
   static propTypes = {
@@ -14,10 +15,7 @@ export default class TitleLink extends Component {
   render() {
     const { title, link } = this.props;
     return (
-      <h2 className="post-tite">
-      <a href={link} dangerouslySetInnerHTML={this.createMarkup(title)}>
-      </a>
-      </h2>
+      <Link to={'/' + link} ><h2 className="post-tite" dangerouslySetInnerHTML={this.createMarkup(title)} ></h2></Link>
     );
   }
 }

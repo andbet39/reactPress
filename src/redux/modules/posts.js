@@ -45,8 +45,11 @@ export default function reducer(state = initialState, action = {}) {
   }
 }
 
-export function isLoaded(globalState) {
-  return globalState.posts && globalState.posts.loaded;
+export function isLoaded(page, globalState) {
+  if (page === globalState.currentPage && globalState.posts && globalState.posts.loaded) {
+    return true;
+  }
+  return false;
 }
 
 export function loadpage(page) {

@@ -1,31 +1,26 @@
 import React, {Component, PropTypes} from 'react';
+import { Link } from 'react-router';
 
 export default class Pagination extends Component {
   static propTypes = {
     maxPage: PropTypes.number,
     curPage: PropTypes.number,
-    handlePageSelect: PropTypes.func
   }
 
 
   render() {
     const { maxPage, curPage} = this.props;
 
-    const handleClickPage = (btn) => {
-      const {handlePageSelect} = this.props; // eslint-disable-line no-shadow
-      return () => handlePageSelect(Number(btn));
-    };
-
     const btnArray = [];
     for (let btn = 1; btn <= maxPage; btn++) {
-      btnArray.push(<li className={ btn === curPage ? 'active' : ''} ><a href="#" onClick={ handleClickPage(btn) }>{btn}</a></li>);
+      btnArray.push(<li className={ btn === curPage ? 'active' : ''} ><Link to={'/posts/' + btn} >{btn}</Link></li>);
     }
 
     return (
       <ul className="pagination pagination-sm">
-        <li><a href="#" className={ curPage === 1 ? 'disabled' : ''} onClick={ handleClickPage(1) }>&laquo;</a></li>
+        <li className={ curPage === 1 ? 'disabled' : ''} ><Link to={'/posts/1'} >&laquo;</Link></li>
         {btnArray}
-        <li><a href="#" className={ curPage === maxPage ? 'disabled' : ''} onClick={ handleClickPage(maxPage) }>&raquo;</a></li>
+        <li className={ curPage === maxPage ? 'disabled' : ''}><Link to={'/posts/' + maxPage} >&raquo;</Link></li>
       </ul>
     );
   }

@@ -12,8 +12,8 @@ import { Pagination } from 'components';
 @asyncConnect([{
   deferred: true,
   promise: ({params, store: {dispatch, getState}}) => {
-    if (!isLoaded(getState())) {
-      const page = params.page ? params.page : 1;
+    const page = params.page ? params.page : 1;
+    if (!isLoaded(page, getState())) {
       return dispatch(loadpage(page));
     }
   }
@@ -37,12 +37,6 @@ export default class Posts extends Component {
     currentPage: PropTypes.number,
     maxPage: PropTypes.string
   };
-
-  handlePageSelect(page) {
-    const { dispatch } = this.props;
-    const urlpage = parseInt(page, 10);
-    return dispatch(loadpage(urlpage));
-  }
 
   render() {
     const styles = require('./posts.scss');
@@ -69,7 +63,7 @@ export default class Posts extends Component {
             }
             </div>
           </div>
-          <Pagination maxPage={maxPage} curPage={currentPage} handlePageSelect={ (page) => this.handlePageSelect(page) }/>
+          <Pagination maxPage={maxPage} curPage={currentPage}/>
           {loading &&
             <div>Loading...</div>
           }

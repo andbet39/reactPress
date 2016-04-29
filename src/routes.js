@@ -56,6 +56,7 @@ export default (store) => {
       <Route path="survey" component={Survey}/>
       <Route path="widgets" component={Widgets}/>
       <Route path="posts" component={Posts}/>
+      <Route path="posts/:page" component={Posts}/>
       <Route path="/:slug" component={Post}/>
       <Route path="admin/posts" component={PostAdmin}/>
       <Route path="admin/post/:postId" component={PostInfo}/>
