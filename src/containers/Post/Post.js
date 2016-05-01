@@ -7,6 +7,8 @@ import { asyncConnect } from 'redux-async-connect';
 import * as postActions from 'redux/modules/post';
 import { Body } from 'components';
 import { CodeHighLight } from 'components';
+import { Title } from 'components';
+import { Link} from 'react-scroll';
 
 @asyncConnect([{
   deferred: true,
@@ -40,8 +42,8 @@ export default class Post extends Component {
         {post &&
           <div>
           <Helmet title={post.title.rendered} />
-          <h1>{post.title.rendered}</h1>
-          <Body text={post.content.rendered}/>
+          <Title title={post.title.rendered} />
+          <Body sections={post.sections}/>
           <CodeHighLight/>
           </div>
         }

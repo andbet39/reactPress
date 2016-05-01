@@ -90,6 +90,7 @@
     }
   },
   "dependencies": {
+    "algoliasearch": "^3.13.1",
     "axios": "^0.10.0",
     "babel-core": "^6.5.2",
     "babel-loader": "^6.2.1",
@@ -104,6 +105,7 @@
     "babel-register": "^6.3.13",
     "babel-runtime": "^6.3.19",
     "body-parser": "^1.14.1",
+    "cheerio": "^0.20.0",
     "compression": "^1.6.0",
     "express": "^4.13.3",
     "express-session": "^1.12.1",
@@ -134,6 +136,7 @@
     "react-router": "2.0.0",
     "react-router-bootstrap": "^0.20.1",
     "react-router-redux": "^3.0.0",
+    "react-scroll": "^1.0.15",
     "redux": "^3.0.4",
     "redux-async-connect": "^1.0.0-rc2",
     "redux-form": "^3.0.12",

@@ -1,3 +1,17 @@
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600italic,700,300|Merriweather:400,300,700);
+$break-small: 320px;
+$break-large: 768px;
+$sidebar-widht :200px;
+
+body {
+  background-color: #ececec;
+}
+
+.navbar {
+  border-radius: 0px;
+}
+
 .app {
   .brand {
     position: absolute;
@@ -9,11 +23,110 @@
     width: $size;
     height: $size;
     background-size: 80%;
-    margin: 0 10px 0 0;
     border-radius: $size / 2;
   }
-  nav :global(.fa) {
-    font-size: 2em;
-    line-height: 20px;
+
+}
+
+.mainContent{
+  @media (min-width: $break-small) {
+    margin-left: 15px;
+    margin-right: 5px;
   }
+
+  @media (min-width: $break-large) {
+    margin-left: $sidebar-widht;
+  }
+}
+
+.contentToggled{
+  margin-left: 0px;
+}
+
+.wrapper{
+  display: block;
+  width: 100%;
+}
+
+.sidebar, .mainContent{
+  -webkit-transition: margin 200ms ease-out;
+  -moz-transition: margin 200ms ease-out;
+  -o-transition: margin 200ms ease-out;
+  transition: margin 200ms ease-out;
+}
+
+
+
+  .sidebar{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    padding-top: 10px;
+    bottom: 0px;
+    height: 100%;
+    color: #9b9b9b;
+    background-color: #ffffff;
+    overflow: hidden;
+    margin-left: 0px;
+    padding-left: 10px;
+    float: left;
+
+    @media (min-width: $break-small) {
+      width: 0px;
+    }
+
+    @media (min-width: $break-large) {
+      width: $sidebar-widht;
+    }
+  }
+
+  .toggled{
+
+    @media (min-width: $break-small) {
+      margin-left: 0px;
+    }
+
+    @media (min-width: $break-large) {
+      margin-left: -$sidebar-widht;
+    }
+  }
+
+.toggleBtn{
+  position: fixed;
+  background-color: white;
+  border-radius: 25px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-right: -25px;
+  top:20px;
+  display: inline-block;
+
+
+  @media (min-width: $break-small) {
+    display: none;
+  }
+  @media (min-width: $break-large) {
+    display: inherit;
+  }
+}
+
+
+.dropdown {
+  position: fixed;
+  background-color: white;
+  border-radius: 25px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-right: -25px;
+  top:70px;
+  display: inline-block;
+}
+
+
+nav.navbar {
+  border-radius: 0px;
 }

@@ -13,7 +13,10 @@ import { routeActions } from 'react-router-redux';
 import config from '../../config';
 import { asyncConnect } from 'redux-async-connect';
 import { LoadingBar } from 'components';
-
+import { SideBar } from 'components';
+import { toggle } from 'redux/modules/sidebar';
+import jQuery from 'jquery';
+import {SearchForm} from 'components';
 
 @asyncConnect([{
   promise: ({store: {dispatch, getState}}) => {
@@ -30,19 +33,29 @@ import { LoadingBar } from 'components';
   }
 }])
 @connect(
-  state => ({user: state.auth.user}),
+  state => ({user: state.auth.user, toggled: state.sidebar.toggled}),
   {logout, pushState: routeActions.push})
 export default class Blog extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     user: PropTypes.object,
     logout: PropTypes.func.isRequired,
-    pushState: PropTypes.func.isRequired
+    pushState: PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    toggled: PropTypes.bool,
   };
 
   static contextTypes = {
     store: PropTypes.object.isRequired
   };
+
+  componentDidMount() {
+    jQuery(window).scroll(()=>{
+      const theta = jQuery(window).scrollTop() / 30 % Math.PI;
+      jQuery('#navbutton').css({ transform: 'rotate(-' + theta + 'rad)' });
+      jQuery('#sidebutton').css({ transform: 'rotate(-' + theta + 'rad)' });
+    });
+  }
 
   componentWillReceiveProps(nextProps) {
     if (!this.props.user && nextProps.user) {
@@ -59,18 +72,28 @@ export default class Blog extends Component {
     this.props.logout();
   };
 
+  handleToggle = (event) =>{
+    event.preventDefault();
+    console.log('toggle sidebar');
+    return this.props.dispatch(toggle());
+  };
   render() {
-    const {user} = this.props;
+    const {user, toggled} = this.props;
     const styles = require('./Blog.scss');
 
+    let togClass = '';
+    if (toggled) {
+      togClass = styles.contentToggled;
+    }
     return (
-      <div className={styles.app}>
-        <LoadingBar/>
-        <Helmet {...config.app.head}/>
-
-        <div className={styles.appContent}>
-          {this.props.children}
-        </div>
+      <div className={styles.wrapper}>
+        <SideBar/>
+        <div className={styles.mainContent + ' ' + togClass}>
+          <LoadingBar/>
+          <Helmet {...config.app.head}/>
+            <btn id="sidebutton" className={styles.toggleBtn} onClick={(event)=>this.handleToggle(event)}><i className="fa fa-bars fa-5" aria-hidden="true"></i></btn>
+              {this.props.children}
+         </div>
       </div>
     );
   }

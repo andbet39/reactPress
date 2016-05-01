@@ -14,11 +14,11 @@ export default class Excerpt extends Component {
   }
 
   render() {
+    const styles = require('./titleLink.scss');
     const { text } = this.props;
     return (
-        <section className="post-excerpt">
-          <p dangerouslySetInnerHTML={this.createMarkup(text)}></p>
-        </section>
+        <div className={styles.postExcerpt} dangerouslySetInnerHTML={this.createMarkup(text)}>
+        </div>
     );
   }
 }

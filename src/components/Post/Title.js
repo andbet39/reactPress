@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import { Link } from 'react-router';
 
-export default class TitleLink extends Component {
+export default class Title extends Component {
   static propTypes = {
     title: PropTypes.string,
     link: PropTypes.string,
@@ -13,11 +13,11 @@ export default class TitleLink extends Component {
   }
 
   render() {
-    const { title, link } = this.props;
+    const { title } = this.props;
     const styles = require('./titleLink.scss');
     return (
-      <div className={styles.postTitle}>
-        <Link to={'/' + link.replace('/', '')} ><h1 dangerouslySetInnerHTML={this.createMarkup(title)} ></h1></Link>
+      <div className={styles.mainTitle}>
+        <h1 dangerouslySetInnerHTML={this.createMarkup(title)} ></h1>
       </div>
     );
   }

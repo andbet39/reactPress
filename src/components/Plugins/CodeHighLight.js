@@ -13,7 +13,6 @@ export default class CodeHighLight extends Component {
 
   render() {
     require('highlight.js/styles/monokai.css');
-
     return false;
   }
 }

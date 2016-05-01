@@ -8,6 +8,7 @@ import * as postActions from 'redux/modules/posts';
 import { TitleLink } from 'components';
 import { Excerpt } from 'components';
 import { Pagination } from 'components';
+import { SearchForm } from 'components';
 
 @asyncConnect([{
   deferred: true,
@@ -24,7 +25,8 @@ import { Pagination } from 'components';
     error: state.posts.error,
     loading: state.posts.loading,
     currentPage: state.posts.currentPage,
-    maxPage: state.posts.total_pages
+    maxPage: state.posts.total_pages,
+    searchresult: state.algoliasearch.results
   }),
   {...postActions, initializeWithKey })
 export default class Posts extends Component {
@@ -35,35 +37,40 @@ export default class Posts extends Component {
     initializeWithKey: PropTypes.func.isRequired,
     dispatch: PropTypes.func,
     currentPage: PropTypes.number,
-    maxPage: PropTypes.string
+    maxPage: PropTypes.string,
+    searchresult: PropTypes.array
   };
 
   render() {
     const styles = require('./posts.scss');
-    const {posts, error, loading, maxPage, currentPage} = this.props;
+    const {posts, error, loading, maxPage, currentPage, searchresult} = this.props;
     return (
-        <div>
+        <div className="container-fluid">
           {error &&
           <div className="alert alert-danger" role="alert">
             <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             {' '}
             {error}
           </div>}
-          <div className={'container row'}>
-            <div className={'col-md-9'}>
-            {posts && posts.length &&
-              posts.map((post) =>
-                <article>
-                  <div className={styles.main + ' row'}>
-                  <TitleLink key={post.id} link={post.slug} title={post.title.rendered}/>
-                  <Excerpt key={post.id + 1000} text={post.excerpt.rendered} />
-                  </div>
-                </article>
+          <SearchForm/>
+          {searchresult && searchresult.length &&
+              searchresult.map((result)=>
+                <div className={styles.postMain} >
+                  <TitleLink key={result.objectID} link={result.permalink.replace('https:\/\/www.codetutorial.io', '')} title={result.post_title}/>
+                </div>
               )
             }
-            </div>
-          </div>
-          <Pagination maxPage={maxPage} curPage={currentPage}/>
+            {!searchresult && posts && posts.length &&
+              posts.map((post) =>
+                  <div className={styles.postMain} >
+                    <TitleLink key={post.id} link={post.slug} title={post.title.rendered}/>
+                    <Excerpt key={post.id + 1000} text={post.excerpt.rendered} />
+                  </div>
+              )
+            }
+          {!searchresult &&
+            <Pagination maxPage={maxPage} curPage={currentPage}/>
+          }
           {loading &&
             <div>Loading...</div>
           }
