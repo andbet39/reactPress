@@ -4,6 +4,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import { searchPost, clearSearch } from 'redux/modules/algoliasearch';
+import {debounce} from 'throttle-debounce';
 
 
 @connect(
@@ -19,19 +20,26 @@ export default class SearchForm extends Component {
     error: PropTypes.string
   }
 
-  changeContent = (event) => {
-    if (event.target.value.length > 2) {
+  constructor() {
+    super();
+    this.callAlgolia = debounce(500, this.callAlgolia);
+  }
+  printChange(event) {
+    this.callAlgolia(event.target.value);
+  }
+  callAlgolia(value) {
+     if (value.length > 2) {
       this.props.dispatch(searchPost(event.target.value));
     }
-    if (event.target.value.length === 0) {
+    if (value.length === 0) {
       this.props.dispatch(clearSearch());
-    }
+    }    // call ajax
   }
 
   render() {
     return (
       <div>
-        <input type="text" onChange={this.changeContent}/>
+        <input type="text" onKeyUp={this.printChange.bind(this)} />
       </div>
     );
   }
