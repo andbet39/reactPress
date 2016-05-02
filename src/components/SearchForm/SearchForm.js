@@ -28,12 +28,12 @@ export default class SearchForm extends Component {
     this.callAlgolia(event.target.value);
   }
   callAlgolia(value) {
-     if (value.length > 2) {
-      this.props.dispatch(searchPost(event.target.value));
+    if (value.length > 2) {
+      this.props.dispatch(searchPost(value));
     }
     if (value.length === 0) {
       this.props.dispatch(clearSearch());
-    }    // call ajax
+    }
   }
 
   render() {
