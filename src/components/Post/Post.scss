@@ -1,0 +1,42 @@
+
+.PostSection {
+  background-color: white;
+  margin: 25px;
+  padding-top: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 20px;
+  border-radius: 5px;
+}
+
+.SubTitle h2{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: #233232;
+  padding-bottom: 20px;
+}
+
+.PostParagraph{
+
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+  font-size: 14px;
+
+  img{
+      width: 100%;
+  }
+
+  p{
+    padding-bottom: 15px;
+    padding-top: 15px;
+    line-height: 200%;
+
+  }
+
+
+  pre{
+    margin-right: -40px;
+    margin-left:-40px;
+  }
+}
