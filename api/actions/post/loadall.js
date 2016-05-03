@@ -1,12 +1,13 @@
 import axios from 'axios';
+import config from '../../config';
 
 export default function loadall(req) {
   return new Promise((resolve, reject) => {
     const page = req.param('page');
-    let url ='http://api.codetutorial.io/index.php/wp-json/wp/v2/posts'
+    let url = config.baseWPURL + '/wp-json/wp/v2/posts'
 
     if( page ){
-        url ='http://api.codetutorial.io/index.php/wp-json/wp/v2/posts?page=' + page;
+        url = config.baseWPURL + '/wp-json/wp/v2/posts?page=' + page;
     }
     console.log(url);
     axios.get( url )

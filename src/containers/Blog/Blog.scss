@@ -3,6 +3,8 @@
 $break-small: 320px;
 $break-large: 768px;
 $sidebar-widht :200px;
+$button1-top: 150px;
+$button2-top: 190px;
 
 body {
   background-color: #ececec;
@@ -100,7 +102,7 @@ body {
   padding-top: 2px;
   padding-bottom: 2px;
   margin-right: -25px;
-  top:20px;
+  top:$button1-top;
   display: inline-block;
 
 
@@ -122,7 +124,7 @@ body {
   padding-top: 2px;
   padding-bottom: 2px;
   margin-right: -25px;
-  top:70px;
+  top:$button2-top;
   display: inline-block;
 }
 
