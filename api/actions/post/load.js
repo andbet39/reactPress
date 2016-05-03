@@ -49,7 +49,7 @@ export default function load(req) {
 
                    console.log(lang.toLowerCase());
 
-                   rendered.find("#"+id).replaceWith('<pre><code class="'+lang.toLowerCase()+'">'+content+'</code></pre>');
+                   rendered.find("#"+id).replaceWith('<pre class="'+lang.toLowerCase()+'"><code class="'+lang.toLowerCase()+'">'+content+'</code></pre>');
                  });
 
 
