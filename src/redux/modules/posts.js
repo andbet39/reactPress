@@ -58,3 +58,4 @@ export function loadpage(page) {
     promise: (client) => client.get('/post/loadall?page=' + page)
   };
 }
+

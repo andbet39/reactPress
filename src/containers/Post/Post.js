@@ -44,7 +44,6 @@ export default class Post extends Component {
           <Helmet title={post.title.rendered} />
           <Title title={post.title.rendered} />
           <Body sections={post.sections}/>
-          <CodeHighLight/>
           </div>
         }
         </div>

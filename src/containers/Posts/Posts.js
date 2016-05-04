@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import Helmet from 'react-helmet';
 import {connect} from 'react-redux';
 import {isLoaded, loadpage } from 'redux/modules/posts';
+import {setCurrent} from 'redux/modules/post';
 import {initializeWithKey} from 'redux-form';
 import { asyncConnect } from 'redux-async-connect';
 import * as postActions from 'redux/modules/posts';
@@ -9,6 +10,7 @@ import { TitleLink } from 'components';
 import { Excerpt } from 'components';
 import { Pagination } from 'components';
 import { SearchForm } from 'components';
+
 
 @asyncConnect([{
   deferred: true,
@@ -40,7 +42,6 @@ export default class Posts extends Component {
     maxPage: PropTypes.string,
     searchresult: PropTypes.array
   };
-
   render() {
     const styles = require('./posts.scss');
     const {posts, error, loading, maxPage, currentPage, searchresult} = this.props;
@@ -63,7 +64,7 @@ export default class Posts extends Component {
             {!searchresult && posts && posts.length &&
               posts.map((post) =>
                   <div className={styles.postMain} >
-                    <TitleLink key={post.id} link={post.slug} title={post.title.rendered}/>
+                    <TitleLink key={post.id} post= {post} link={post.slug} title={post.title.rendered}/>
                     <Excerpt key={post.id + 1000} text={post.excerpt.rendered} />
                   </div>
               )
