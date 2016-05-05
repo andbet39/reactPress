@@ -10,6 +10,3 @@ export Survey from './Survey/Survey';
 export NotFound from './NotFound/NotFound';
 export Posts from './Posts/Posts';
 export Post from './Post/Post';
-export PostAdmin from './PostAdmin/PostAdmin';
-export PostInfo from './PostAdmin/PostInfo';
-

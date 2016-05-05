@@ -10,7 +10,6 @@ import info from './info';
 import widgets from './widgets';
 import posts from './posts';
 import post from './post';
-import postinfo from './postinfo';
 import sidebar from './sidebar';
 import algoliasearch from './algoliasearch';
 
@@ -28,7 +27,6 @@ export default combineReducers({
   widgets,
   posts,
   post,
-  postinfo,
   sidebar,
   algoliasearch
 });

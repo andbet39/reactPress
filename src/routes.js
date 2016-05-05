@@ -14,8 +14,6 @@ import {
     NotFound,
     Posts,
     Post,
-    PostAdmin,
-    PostInfo
   } from 'containers';
 
 export default (store) => {
@@ -58,9 +56,6 @@ export default (store) => {
       <Route path="posts" component={Posts}/>
       <Route path="posts/:page" component={Posts}/>
       <Route path="/:slug" component={Post}/>
-      <Route path="admin/posts" component={PostAdmin}/>
-      <Route path="admin/post/:postId" component={PostInfo}/>
-
       { /* Catch all route */ }
       <Route path="*" component={NotFound} status={404} />
     </Route>
