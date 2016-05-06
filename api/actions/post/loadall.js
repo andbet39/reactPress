@@ -31,6 +31,7 @@ export default function loadall(req) {
             resolve(response.data);
         })
         .catch(function (response) {
+          console.log(response);
           reject('Error loading posts');
         });
       });

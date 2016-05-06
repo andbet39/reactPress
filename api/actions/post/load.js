@@ -13,7 +13,6 @@ export default function load(req) {
         .then((response) => {
 
           const post = handlePost(response.data[0]);
-          
           resolve(post);
         })
        .catch(function (response) {
