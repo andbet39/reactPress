@@ -1,5 +1,5 @@
 
 
 module.exports = Object.assign( {
-  baseWPURL :'http://api.codetutorial.io/index.php'
+  baseWPURL :'http://45.55.26.31/index.php'
 });
