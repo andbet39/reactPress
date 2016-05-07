@@ -5,15 +5,6 @@
  *
  */
 
-export CounterButton from './CounterButton/CounterButton';
-export GithubButton from './GithubButton/GithubButton';
-export InfoBar from './InfoBar/InfoBar';
-export MiniInfoBar from './MiniInfoBar/MiniInfoBar';
-export SurveyForm from './SurveyForm/SurveyForm';
-export WidgetForm from './WidgetForm/WidgetForm';
-
-
-export TitleLink from './Post/TitleLink';
 export Title from './Post/Title';
 export Excerpt from './Post/Excerpt';
 export Pagination from './Pagination/Pagination';
@@ -24,3 +15,4 @@ export PostSection from './Post/PostSection';
 export SideBar from './Sidebar/Sidebar';
 export SearchForm from './SearchForm/SearchForm';
 export PostNavigator from './PostNavigator/PostNavigator';
+export HomePost from './HomePost/Post';

@@ -14,7 +14,7 @@ export default class Excerpt extends Component {
   }
 
   render() {
-    const styles = require('./titleLink.scss');
+    const styles = require('./Post.scss');
     const { text } = this.props;
     return (
         <div className={styles.postExcerpt} dangerouslySetInnerHTML={this.createMarkup(text)}>

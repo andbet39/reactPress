@@ -10,6 +10,7 @@ import { TitleLink } from 'components';
 import { Excerpt } from 'components';
 import { Pagination } from 'components';
 import { SearchForm } from 'components';
+import { HomePost } from 'components';
 
 
 @asyncConnect([{
@@ -53,25 +54,34 @@ export default class Posts extends Component {
             {' '}
             {error}
           </div>}
-          <SearchForm/>
-          {searchresult && searchresult.length &&
+          <div className="row">
+            <div className="col-sm-12">
+              <SearchForm/>
+            </div>
+          </div>
+          <div className="row">
+            <div className={styles.center}>
+              {searchresult && searchresult.length &&
               searchresult.map((result)=>
                 <div className={styles.postMain} >
                   <TitleLink key={result.objectID} link={result.permalink.replace('https:\/\/www.codetutorial.io', '')} title={result.post_title}/>
                 </div>
               )
-            }
-            {!searchresult && posts && posts.length &&
+              }
+              {!searchresult && posts && posts.length &&
               posts.map((post) =>
-                  <div className={styles.postMain} >
-                    <TitleLink key={post.id} post= {post} link={post.slug} title={post.title.rendered}/>
-                    <Excerpt key={post.id + 1000} text={post.excerpt.rendered} />
-                  </div>
+                <HomePost post={post} />
               )
-            }
-          {!searchresult &&
+              }
+            </div>
+          </div>
+        <div className="row">
+          <div className="col-sm-12">
+            {!searchresult &&
             <Pagination maxPage={maxPage} curPage={currentPage}/>
-          }
+            }
+          </div>
+        </div>
           {loading &&
             <div>Loading...</div>
           }

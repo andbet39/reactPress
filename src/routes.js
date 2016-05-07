@@ -49,10 +49,8 @@ export default (store) => {
       </Route>
 
       { /* Routes */ }
-      <Route path="about" component={About}/>
       <Route path="login" component={Login}/>
       <Route path="survey" component={Survey}/>
-      <Route path="widgets" component={Widgets}/>
       <Route path="posts" component={Posts}/>
       <Route path="posts/:page" component={Posts}/>
       <Route path="/:slug" component={Post}/>

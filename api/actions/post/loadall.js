@@ -11,7 +11,7 @@ export default function loadall(req) {
     let url = config.baseWPURL + '/wp-json/wp/v2/posts'
 
     if( page ){
-        url = config.baseWPURL + '/wp-json/wp/v2/posts?page=' + page;
+        url = config.baseWPURL + '/wp-json/wp/v2/posts?page=' + page + '&per_page=9';
     }
     console.log(url);
     axios.get( url )

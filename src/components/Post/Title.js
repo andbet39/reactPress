@@ -14,7 +14,7 @@ export default class Title extends Component {
 
   render() {
     const { title } = this.props;
-    const styles = require('./titleLink.scss');
+    const styles = require('./Post.scss');
     return (
       <div className={styles.mainTitle}>
         <h1 dangerouslySetInnerHTML={this.createMarkup(title)} ></h1>
