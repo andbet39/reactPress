@@ -16,3 +16,5 @@ export SideBar from './Sidebar/Sidebar';
 export SearchForm from './SearchForm/SearchForm';
 export PostNavigator from './PostNavigator/PostNavigator';
 export HomePost from './HomePost/Post';
+export DiscusThread from './DiscusThread/DiscusThread';
+
