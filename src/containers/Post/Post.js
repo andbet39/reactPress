@@ -9,6 +9,7 @@ import { Body } from 'components';
 import { CodeHighLight } from 'components';
 import { Title } from 'components';
 import { Link} from 'react-scroll';
+import { DiscusThread } from 'components';
 
 @asyncConnect([{
   deferred: true,
@@ -44,6 +45,7 @@ export default class Post extends Component {
           <Helmet title={post.title.rendered} />
           <Title title={post.title.rendered} />
           <Body sections={post.sections}/>
+          <DiscusThread/>
           </div>
         }
         </div>

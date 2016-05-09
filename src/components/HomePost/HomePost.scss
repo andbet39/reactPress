@@ -1,6 +1,6 @@
 
 
-$transitionTime: 0.2s;
+$transitionTime: 0.5s;
 
 .postContainer{
   max-width: 300px;
@@ -8,6 +8,7 @@ $transitionTime: 0.2s;
   padding-left: 0px;
   padding-right: 0px;
   background-color: #ecf0f1;
+
 
   a{
     text-decoration: none;
@@ -32,16 +33,18 @@ $transitionTime: 0.2s;
   .postTitle{
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 0px;
     background-color: rgba(0, 152, 255, 0);
     font-family: 'Open Sans', sans-serif;
-    line-height: 26px;
+    line-height: 22px;
     font-weight: 600;
     text-align: left;
     letter-spacing: -1px;
-    color: #2c3e50;
+    color: #606060;
     margin-bottom: 15px;
-    font-size: 24px;
+    font-size: 20px;
     transition: all $transitionTime ease-in-out;
+    margin-top: 5px;
 
     margin-top: 7px;
 
