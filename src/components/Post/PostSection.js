@@ -15,7 +15,9 @@ export default class PostSection extends Component {
     const styles = require('./Post.scss');
     return (
         <div className={styles.PostSection}>
-          <div className={styles.SubTitle}> <h2>{title}</h2> </div>
+    {title !== "" && title.length &&
+      <div className={styles.SubTitle}> <h2><i className="fa fa-link fa-3" aria-hidden="true"></i>{title}</h2> </div>}
+
           <div className={styles.PostParagraph} dangerouslySetInnerHTML={this.createMarkup(body)}></div>
         </div>
     );
